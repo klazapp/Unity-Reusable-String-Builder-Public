@@ -1,6 +1,6 @@
 {
   "name": "com.klazapp.reusablestringbuilder",
-  "displayName": "Klazapp Reusable String Builder",
+  "displayName": "Unity Reusable String Builder",
   "version": "1.0.0",
   "unity": "2022.3",
   "description": "This custom editor helper tool development",
