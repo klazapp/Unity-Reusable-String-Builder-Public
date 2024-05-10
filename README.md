@@ -1,35 +1,45 @@
 # Reusable String Builder Utility for Unity
 
 ## Introduction
-The `Reusable String Builder` utility, part of the `com.Klazapp.Utility` namespace, is s designed for efficient string manipulation, especially when dealing with a large number of string concatenations or modifications.
+
+The Reusable StringBuilder, provided by `com.Klazapp.Utility`, is a Unity-specific tool designed to optimize string manipulations by reusing a single instance of `StringBuilder`. This utility reduces the overhead associated with frequent creation and disposal of `StringBuilder` instances, particularly beneficial in performance-critical applications such as gaming.
 
 ## Features
-- StringBuilder provides methods like Append and AppendLine for efficiently concatenating strings without creating unnecessary intermediate string objects. This can be particularly useful in scenarios where you need to build a string dynamically, such as constructing log messages or displaying UI text.
-- Unlike regular string objects in C#, which are immutable (cannot be changed once created), StringBuilder allows you to modify the contents of the string in-place. You can insert, replace, or remove characters from the string buffer without creating new string objects each time.
-  
+
+- **Efficient String Building:** Utilizes a single, reusable instance of `StringBuilder` to minimize garbage collection and improve performance during frequent string manipulations.
+- **Easy-to-Use API:** Offers a simple method `StringBuilderReuse` that clears the current contents and appends new strings efficiently.
+- **Thread-Safe Operations:** Enhanced with `MethodImpl` attributes to ensure aggressive inlining and potentially optimize performance.
+
 ## Dependencies
-To use `Reusable String Builder`, certain dependencies are required. Ensure these are included in your Unity project.
-- **Unity Version**: Minimum Unity 2020.3 LTS.
-- Editor Helper DLL
+
+This utility requires Unity as it extends from MonoSingletonGlobal, ensuring that the instance is globally accessible within your Unity project.
 
 ## Compatibility
-| Compatibility        | URP | BRP | HDRP |
-|----------------------|-----|-----|------|
-| Compatible           | ✔️  | ✔️  | ✔️   |
+
+The Reusable StringBuilder is designed to be compatible with any Unity project. It does not depend on specific rendering pipelines or Unity versions, making it versatile for any development environment.
+
+| Compatibility     | URP | BRP | HDRP |
+|-------------------|-----|-----|------|
+| Compatible        | ✔️   | ✔️   | ✔️    |
 
 ## Installation
-1. Open the Unity Package Manager (`Window` > `Package Manager`).
-2. Click `+`, select `Add package from git URL...`, and enter `https://github.com/klazapp/Unity-Reusable-Strinbg-Builder-Public.git`.
-3. Unity will download and make the package available in your project.
+
+1. Download the Reusable StringBuilder script from the [GitHub repository](https://github.com/klazapp/Unity-Reusable-StringBuilder-Public.git) or via the Unity Package Manager.
+2. Add the script to your Unity project to integrate efficient string building capabilities.
 
 ## Usage
+
+Add the `ReusableStringBuilder` to a global manager object in your scene or keep it accessible through the singleton pattern. Use the `StringBuilderReuse` method to combine strings efficiently:
+
 ```csharp
-Write Something here
+string result = ReusableStringBuilder.Instance.StringBuilderReuse("Hello, ", "World!");
 ```
 
 ## To-Do List (Future Features)
-- 
+
+- [ ] Enhance thread safety for multi-threaded use cases.
+- [ ] Expand API to include more complex string manipulation methods.
 
 ## License
-This utility is released under the [MIT License](LICENSE).
 
+This utility is released under the MIT License, allowing free use, modification, and distribution within your projects.
